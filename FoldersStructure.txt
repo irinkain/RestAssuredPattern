@@ -1,0 +1,10 @@
+
+#/src/main/java/Data
+			#Constants - კონსტანტური ცვლადებისთვის
+			#Models	- POJO - ებისთვის
+				requests - რექვესტების პოჯოები
+				responses - რესპონსის პოჯოები
+			#Steps - სტეპ კლასებისთვის
+			#Utils - სხვა დამხმარე კლასებისთვის
+#/src/test
+	#TestClasses - პირდაპირ ტესტ კლასებისთვის
