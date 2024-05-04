@@ -1,0 +1,53 @@
+Rest Assured Framework
+
+folder structure
+
+#Models	
+	requests
+	responses
+#Steps
+#Utils
+
+## https://demoqa.com/Account/v1/GenerateToken
+
+/*Models*/
+   responses
+      Token class
+    public String token;
+    public String expires;
+    public String status;
+    public String result;
+     
+    requests
+      public class AuthorizationRequest {
+
+      public String username;
+      public String password;
+
+      public AuthorizationRequest(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+}
+
+
+/*Steps*/
+
+    public void iAmAnAuthorizedUser() {
+        AuthorizationRequest authRequest = new AuthorizationRequest("TOOLSQA-Test", "Test@@123");
+        response = Endpoints.authenticateUser(authRequest);
+        tokenResponse = response.getBody().as(Token.class);
+    }
+
+/*Utils*/
+
+ public static class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
+        public LocalDateTimeDeserializer() {
+        }
+
+        @Override
+        public LocalDateTime deserialize(JsonParser arg0, DeserializationContext arg1) throws IOException {
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+            return LocalDateTime.parse(arg0.getText(),formatter);
+        }
+    }
